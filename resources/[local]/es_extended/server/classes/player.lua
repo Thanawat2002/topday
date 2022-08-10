@@ -6,6 +6,7 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 	self.accounts = accounts
 	self.coords = coords
 	self.group = group
+	self.license = identifier
 	self.identifier = identifier
 	self.inventory = inventory
 	self.job = job
