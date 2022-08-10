@@ -1,0 +1,21 @@
+[
+  {
+    "name": "thanawat2002",
+    "master": true,
+    "password_hash": "$2a$11$vMS6W4utXpyYL96YoFziWu2MtkAcQQPYediyMTewp5TU1P.KudIdi",
+    "providers": {
+      "citizenfx": {
+        "id": "thanawat2002",
+        "identifier": "fivem:7788867",
+        "data": {
+          "sub": "f2d2e669d5cf24cb507237c535e42146",
+          "nameid": "https://forum.cfx.re/internal/user/7788867",
+          "name": "thanawat2002",
+          "picture": "https://avatars.discourse.org/v4/letter/t/7933a0/256.png",
+          "profile": "https://forum.cfx.re/u/thanawat2002"
+        }
+      }
+    },
+    "permissions": []
+  }
+]

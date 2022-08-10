@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@200;500&display=swap');
+
+*{
+    font-family: 'Sarabun', sans-serif;
+    transition: .5s ease-out;
+    color: #fff;
+}
+
+html {
+	height: 100%;
+	width:100%;
+}
+
+body {
+    overflow: hidden;
+    min-height: 100%;
+    width:100%;
+}
+
+.container {
+	position: absolute;
+	bottom: 15px;
+	right: 1.4em;
+}
+
+.id {
+    color: white; 
+    font-size: 17px;
+    margin-left: 5px;
+    background: #000;
+}
+
+.container-inner {
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    border-radius: 50px;
+    
+}
+.container-inner::before{
+    content: 'กด [PgUp] เพื่อซ่อน UI';
+    position: absolute;
+    /* right: 0rem; */
+    top: -2rem;
+    padding: 2px 10px;
+    font-size: 13px;
+    color: #000;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.137);
+
+}
+ 
+.seer{
+    position: absolute;
+    margin: 0 auto;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    border-radius: 50px;
+}
+.bar{
+    position: relative;
+	margin-left: 0.35em;
+    width: 2.3em;
+    height: 2.9em; 
+    float: left;
+    z-index: -1000;
+    box-shadow: 0 0 5px #000;
+    /* background-color: rgba(102, 0, 0, 0.5) !important; */
+    /* filter: blur(.5px); */
+    border-radius: 10px;
+	transform: rotate(180deg);
+    clip-path: polygon(49% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    animation: heartbeat 5s .4s ease-in-out infinite both;
+
+}
+
+.bar:nth-child(1){
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.bar:nth-child(2){
+    background-color: rgba(255, 1, 1, 0.5) !important;
+}
+.bar:nth-child(3){
+    background-color: rgba(0, 102, 68, 0.5) !important;
+}
+.bar:nth-child(4){
+    background-color: rgba(223, 97, 216, 0.5) !important;
+}
+.bar:nth-child(5){
+    background-color: rgba(0, 73, 102, 0.5) !important;
+}
+.bar:nth-child(6){
+    background-color: rgba(44, 0, 102, 0.5) !important;
+}
+.bar:nth-child(7){
+    background-color: rgba(102, 54, 0, 0.5) !important;
+}
+.bar:nth-child(8){
+    background-color: rgba(0, 78, 102, 0.5) !important;
+}
+
+#Nub-ber{
+    position: relative;
+    width: 2.3em;
+    height: 2.5em; 
+    float: left;
+    /* border: 3px solid rgb(255, 255, 255) !important;
+    box-shadow: -2px -5px 5px rgba(0, 0, 0, 0.137); */
+    background-color: rgb(0, 0, 0, 0.5);
+	overflow: hidden;
+    /* border-radius: 50px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(49% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+
+}#Nub-ber span{
+    font-size: 0.9vw;
+}
+#heal, #armor, #hunger, #thirst, #drunk, #stamina, #dive, #voice, #stress {
+    position: relative;
+	margin-left: 0.35em;
+    width: 2.3em;
+    height: 2.5em;
+    /* padding: 2px; */
+    float: left;
+    /* border: 3px solid rgb(255, 255, 255) !important;
+    box-shadow: -2px -5px 5px rgba(0, 0, 0, 0.137); */
+    background-color: rgb(0, 0, 0, 0.5);
+	/* overflow: hidden; */
+	transform: rotate(180deg);
+    /* border-radius: 50px; */
+    clip-path: polygon(49% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    
+}
+
+i {
+    position: absolute;
+    font-size: 1.125em;
+    color: white;
+    transform: rotate(180deg);
+    margin: 0 auto;
+    margin-top: 15%;
+    padding: 5px;
+    text-shadow: 0 0 5px rgb(0 0 0 / 14%);
+    z-index: 1000;
+    margin-left: 15%;
+}
+
+.fa-cocktail, .fa-brain, .fa-swimmer, .fa-shield-alt{
+    margin-left: 10%;
+
+}
+
+#alertHeal, #alertArmor, #alertHunger, #alertThirst, #alertDrunk, #alertStamina, #alertDive, #alertStress {
+    width: 100%;
+    height: 100%;
+}
+
+#boxHeal, #boxArmor, #boxHunger, #boxThirst, #boxDrunk, #boxStamina, #boxDive, #boxVoice, #boxStress {
+    width: 100%;
+    height: 50%;
+    transition: 0.2s ease-in-out;
+    clip-path: polygon(49% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    
+}
+
+#boxHeal::before ,#boxArmor::before, #boxHunger::before, #boxThirst::before, #boxDrunk::before, #boxStamina::before, #boxDive::before, #boxVoice::before, #boxStress::before{
+    content: '';
+    position: absolute;
+    opacity: .7;
+    /* background: linear-gradient(0deg, rgb(252, 84, 112) 0%, rgb(124, 46, 1) 100%); */
+    border-radius: 100%;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    animation: roll 4s infinite linear;
+    z-index: 1000;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+
+}
+#boxHeal::after ,#boxArmor::after, #boxHunger::after, #boxThirst::after, #boxDrunk::after, #boxStamina::after, #boxDive::after, #boxVoice::after, #boxStress::after{
+    content: '';
+    position: absolute;
+    opacity: .7;
+    background: linear-gradient(0deg, rgb(252, 84, 112) 0%, rgb(124, 46, 1) 100%);
+    border-radius: 100%;
+    right: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    animation: roll 4s infinite linear;
+    z-index: 1000;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+
+}
+
+@keyframes roll {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+#boxHeal::before,
+#boxHeal::after,
+#boxHeal {
+    background: linear-gradient(0deg, rgb(252, 84, 112) 0%, rgb(124, 46, 1) 100%);
+}
+
+#boxArmor::before,
+#boxArmor::after,
+#boxArmor {
+    background: linear-gradient(0deg, rgb(122, 255, 133) 0%, rgb(4, 56, 99) 100%);
+}
+
+#boxHunger::before,
+#boxHunger::after,
+#boxHunger {
+   background: linear-gradient(0deg, rgb(252, 198, 177) 0%, rgb(119, 2, 84) 100%);
+}
+
+#boxThirst::before,
+#boxThirst::after,
+#boxThirst {
+    background: linear-gradient(0deg, rgb(99, 195, 233) 0%, rgb(41, 72, 245) 100%);
+}
+
+#boxDrunk::before,
+#boxDrunk::after,
+#boxDrunk {
+    background: #750080;
+}
+
+#boxStamina::before,
+#boxStamina::after,
+#boxStamina {
+    background: linear-gradient(0deg, rgb(248, 165, 117) 0%, rgb(114, 37, 2) 100%);
+}
+
+#boxDive::before,
+#boxDive::after,
+#boxDive {
+    background: linear-gradient(0deg, rgb(136, 174, 245) 0%, rgb(4, 81, 83) 100%);
+}
+
+#boxStress::before,
+#boxStress::after,
+#boxStress {
+    background: linear-gradient(0deg, rgb(199, 148, 247) 0%, rgb(131, 8, 8) 100%);
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+@keyframes blinker-stop {  
+  50% { opacity: 1; }
+}
+
+
+@keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: center center;
+            transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+            transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+            transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+            transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+            animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}

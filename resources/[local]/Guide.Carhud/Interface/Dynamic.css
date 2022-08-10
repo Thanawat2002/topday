@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    user-select: none;
+    /* supported by Chrome and Opera */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+}
+
+
+html {
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: none;
+    color: #ffffff;
+}
+
+.shop-container {
+    background-color: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -8%);
+    bottom: 0%;
+    z-index: 9;
+}
+
+.full-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes anim {
+    from {
+        transform: translateY(160px) skew(-5deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) skew(-5deg);
+        opacity: 1;
+    }
+}
+
+@keyframes anim2 {
+    from {
+        transform: translateX(-160px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+@keyframes kuyrai {
+    from {
+        transform: translateX(-500px) scaleX(1.5) skewX(-40deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px) scaleX(0) skewX(-40deg);
+        opacity: 1;
+    }
+}
+@keyframes kuyrai2 {
+    from {
+        transform: translateY(0) scaleX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(0) scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes twink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes kuy {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    width: 530px;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    animation: slideInUp 1s;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 180px;
+    background: linear-gradient(90deg,rgb(52, 119, 219) 0%,rgb(9, 58, 133) 100%);
+    box-shadow: 0px 0px 10px rgb(17, 123, 223);
+    animation: kuyrai 2s;
+    z-index: 999;
+    opacity: 0;
+}
+
+.KHM{
+    float: left;
+    position: relative;
+    width: 30%;
+    border-radius: 5px;
+    margin-right: 4px;
+    background: linear-gradient(120deg,rgba(0, 0, 0, 0.6) 0%,rgba(0, 0, 0, 0.7) 100%);
+}
+
+#KHM{
+    color: #ffffff80;
+    font-size: 13px;
+    margin-left: 5px;
+    text-shadow: 0px 0px 10px rgba(17, 123, 223, 0);
+}
+
+.speed {
+    margin-top: 20px;
+    font-size: 50px;
+    position: relative;
+    animation: anim 1.5s;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0px 0px 10px rgb(17, 123, 223);
+    color: rgb(255, 255, 255);
+    font-style: italic;
+
+}
+
+.name {
+    position: relative;
+    font-size: 13px;
+    text-align: center;
+    top:80%;
+    text-shadow: 0px 0px 10px rgb(17, 123, 223);
+}
+
+.gear{
+    font-size: 13px;
+    text-align: center;
+    text-shadow: 0px 0px 10px rgb(17, 123, 223);
+}
+
+.modegear{
+    font-size: 12px;
+    text-align: center;
+    margin-top: 25px;
+    float: right;
+    animation: anim 1.5s;
+    margin-right: 5px;
+} 
+
+.progressengin {
+    position: relative;
+    color: white;
+    float: left;
+    background: linear-gradient(120deg,rgba(0, 0, 0, 0.6) 0%,rgba(0, 0, 0, 0.7) 100%);
+    border-radius: 4px;
+    text-align: center;
+    padding: 4px;
+    width: 6%;
+    margin-right: 3px;
+}
+
+.progressengin i {
+    opacity: 50%;
+    float: left;
+    text-align: center;
+    margin-left: 5px;
+}
+
+
+
+.progressengin .bar {
+    position: relative;
+    background-color: #0c0c0cc2;
+    border-radius: 3px;
+    width: 30%;
+    height: 70px;
+    float: left;
+    margin-left: 10px;
+    transform: rotate(180deg);
+    margin-top: 5px;
+
+}
+
+.progressengin .bar .percent-engin {
+    position: relative;
+    color: white;
+    background: linear-gradient(90deg,rgb(52, 119, 219) 0%,rgb(17, 99, 223) 100%);
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    height: 8px;
+    opacity: 0.9;
+}
+
+.levelfuel{
+    float: left;
+    text-shadow: 0px 0px 5px rgba(17, 123, 223, 0.699);
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.levelengine{
+    float: left;
+    text-shadow: 0px 0px 5px rgba(17, 123, 223, 0.699);
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+.progress {
+    position: relative;
+    color: white;
+    float: left;
+    background: linear-gradient(120deg,rgba(0, 0, 0, 0.6) 0%,rgba(0, 0, 0, 0.7) 100%);
+    border-radius: 4px;
+    text-align: center;
+    padding: 4px;
+    width: 6%;
+    margin-left: 3px;
+}
+
+.progress i {
+    opacity: 50%;
+    float: left;
+    text-align: center;
+    margin-left: 5px;
+}
+
+
+
+.progress .bar {
+    position: relative;
+    background-color: #0c0c0cc2;
+    border-radius: 3px;
+    width: 30%;
+    height: 70px;
+    float: left;
+    margin-left: 10px;
+    transform: rotate(180deg);
+    margin-top: 5px;
+}
+
+.progress .bar .percent-fuel  {
+    position: relative;
+    color: white;
+    background: linear-gradient(90deg,rgb(52, 119, 219) 0%,rgb(17, 99, 223) 100%);
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    height: 8px;
+    opacity: 0.9;
+}
+
+.wheelchair{
+    float: left;
+    position: relative;
+    width: 20%;
+    border-radius: 5px;
+    background: linear-gradient(120deg,rgba(0, 0, 0, 0.6) 0%,rgba(0, 0, 0, 0.7) 100%);
+}
+
+.wheel{
+    width: 80px;
+    height: 80px;
+    margin-left: 15px;
+    margin-top: 10px;
+    text-align: center;
+    animation: fadeInUp 0.6s;
+}
+
+.textheader{
+    font-size: 12px;
+    font-weight: 200;
+    text-align: center;
+    text-shadow: 0px 0px 5px rgb(17, 123, 223);
+}
+
+#tyres1 ,#tyres2 ,#tyres3 ,#tyres4 {
+    text-align: center;
+    position: relative;
+    filter: opacity(.5);
+    background: rgba(0, 0, 0, 0.829);
+    padding: 2px 8px;
+    color: #fff;
+    float: left;
+    margin: 1px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.Console{
+    text-align: center;
+    font-size: 13px;
+    padding: 4px;
+    background: linear-gradient(90deg,rgb(52, 119, 219) 0%,rgb(17, 99, 223) 100%);
+    border-radius:  5px 5px 0px 0px;
+}
+
+#tyres1.active  ,#tyres2.active  ,#tyres3.active  ,#tyres4.active {
+    filter: opacity(.5);
+    color: rgba(255, 0, 0, 0.8);
+    text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.8); ;
+    animation: twink 1s infinite;
+}
+
+.beltsmode{
+    float: left;
+    position: relative;
+    padding: 5px;
+    width: 30%;
+    background: linear-gradient(120deg,rgba(0, 0, 0, 0.6) 0%,rgba(0, 0, 0, 0.7) 100%);
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+
+.belts {
+    position: absolute;
+    filter: opacity(0.5);
+    margin-left: 30%;
+    margin-top: 10px;
+    text-align: center;
+    animation: swing 5s infinite;
+
+}
+
+.belts.active {
+    filter: opacity(0.5);
+}
+
+.belts img {
+    margin: 5px;
+    width: 45px;
+    animation: slideInUp 1s;
+}
+
+#belt.active {
+    filter: opacity(1);
+    animation: fadeInUp 0.5s ;
+}
+
+
+
+.placeName{
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 4px;
+    padding: 2px;
+    /* background: linear-gradient(90deg,rgba(0, 0, 0, 0.7) 0%,rgba(0, 0, 0, 0.7) 100%);  */
+    background: linear-gradient(90deg,rgba(19, 19, 19, 0) 0%,rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0) 100%);
+}
+
+
+.placeName i{
+    color: #1567c5c2;
+    text-shadow: 0px 0px 10px rgb(17, 123, 223);
+}

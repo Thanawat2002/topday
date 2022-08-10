@@ -1,0 +1,50 @@
+
+================================================================
+======== txAdmin Starting - 8/10/2022, 1:43:16 PM               
+================================================================
+[13:43:54] [thanawat2002] created admins file
+[13:45:13] [thanawat2002] Changing global/fxserver settings via setup stepper.
+[13:46:12] [MONITOR] Restarting server (server failed to start within 300 seconds).
+[13:46:24] [thanawat2002] RESTART SERVER
+[13:46:43] [thanawat2002] RESTART SERVER
+[13:47:56] [thanawat2002] RESTART SERVER
+[13:53:31] [thanawat2002] RESTART SERVER
+[13:54:25] [thanawat2002] RESTART SERVER
+[13:54:40] [thanawat2002] RESTART SERVER
+[13:55:45] [thanawat2002] RESTART SERVER
+[13:57:27] [thanawat2002] RESTART SERVER
+[13:59:51] [thanawat2002] svgui
+[14:00:02] [thanawat2002] svgui
+[14:02:16] [thanawat2002] RESTART SERVER
+[14:09:47] [thanawat2002] RESTART SERVER
+[14:19:16] [thanawat2002] RESTART SERVER
+[14:24:58] [thanawat2002] ensure "esx_rpchat"
+[14:30:12] [thanawat2002] ensure "esx_rpchat"
+[14:30:29] [thanawat2002] RESTART SERVER
+[14:31:34] [thanawat2002] stop "esx_rpchat"
+[15:05:34] [thanawat2002] refresh
+[15:05:39] [thanawat2002] ensure "topday_emotes"
+[15:05:59] [thanawat2002] stop "esx_animations"
+[15:10:00] [thanawat2002] refresh
+[15:10:06] [thanawat2002] ensure "topday_emotes"
+[15:10:42] [thanawat2002] ensure "topday_emotes"
+[15:10:47] [thanawat2002] refresh
+[15:10:53] [thanawat2002] ensure "topday_emotes"
+[15:12:41] [thanawat2002] refresh
+[15:12:46] [thanawat2002] ensure "topday_emotes"
+[15:13:11] [thanawat2002] ensure "topday_emotes"
+[15:18:41] [thanawat2002] RESTART SERVER
+[15:20:07] [thanawat2002] stop "esx_animations"
+[16:12:25] [thanawat2002] refresh
+[16:12:31] [thanawat2002] ensure "statusbar_ui"
+[16:12:58] [thanawat2002] RESTART SERVER
+[16:25:48] [thanawat2002] refresh
+[16:25:53] [thanawat2002] ensure "scoreboard"
+[16:26:44] [thanawat2002] refresh
+[16:26:50] [thanawat2002] stop "scoreboard"
+[16:26:50] [thanawat2002] ensure "KP_Xscoreboard"
+[16:28:07] [thanawat2002] refresh
+[16:28:13] [thanawat2002] stop "KP_Xscoreboard"
+[16:28:14] [thanawat2002] ensure "esx_scoreboard"
+[16:43:29] [thanawat2002] refresh
+[16:43:32] [thanawat2002] ensure "Guide.Carhud"
