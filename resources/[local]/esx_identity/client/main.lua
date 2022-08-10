@@ -1,94 +1,171 @@
-local loadingScreenFinished = false
-local ready = false
+local guiEnabled, hasIdentity, isDead = false, false, false
+local myIdentity, myIdentifiers = {}, {}
 
-RegisterNetEvent('esx_identity:alreadyRegistered')
-AddEventHandler('esx_identity:alreadyRegistered', function()
-    while not loadingScreenFinished do
-        Wait(100)
-    end
+ESX = nil
 
-    TriggerEvent('esx_skin:playerRegistered')
+Citizen.CreateThread(function()
+	while ESX == nil do
+		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+		Citizen.Wait(0)
+	end
 end)
 
-AddEventHandler('esx:loadingScreenOff', function()
-    loadingScreenFinished = true
+AddEventHandler('esx:onPlayerDeath', function(data)
+	isDead = true
 end)
 
-RegisterNUICallback('ready', function(data, cb)
-    ready = true
-    cb(1)
+AddEventHandler('playerSpawned', function(spawn)
+	isDead = false
 end)
 
-if not Config.UseDeferrals then
-    local guiEnabled = false
+function EnableGui(state)
+	SetNuiFocus(state, state)
+	guiEnabled = state
 
-    function EnableGui(state)
-        SetNuiFocus(state, state)
-        guiEnabled = state
-        while not ready do
-            Wait(500)
-        end
-        if state then
-            SetTimecycleModifier("hud_def_blur")
-        else
-            ClearTimecycleModifier()
-        end
-        SendNUIMessage({
-            type = "enableui",
-            enable = state
-        })
-    end
+	SendNUIMessage({
+		type = "enableui",
+		enable = state
+	})
+end
 
-    RegisterNetEvent('esx_identity:showRegisterIdentity')
-    AddEventHandler('esx_identity:showRegisterIdentity', function()
-        TriggerEvent('esx_skin:resetFirstSpawn')
+RegisterNetEvent('esx_identity:showRegisterIdentity')
+AddEventHandler('esx_identity:showRegisterIdentity', function()
+	if not isDead then
+		EnableGui(true)
+	end
+end)
 
-        if not ESX.PlayerData.dead then
-            EnableGui(true)
-        end
-    end)
+RegisterNetEvent('esx_identity:identityCheck')
+AddEventHandler('esx_identity:identityCheck', function(identityCheck)
+	hasIdentity = identityCheck
+end)
 
-    RegisterNUICallback('register', function(data, cb)
-        ESX.TriggerServerCallback('esx_identity:registerIdentity', function(callback)
-            if callback then
-                ESX.ShowNotification(_U('thank_you_for_registering'))
-                EnableGui(false)
-                if not ESX.GetConfig().Multichar then
-                    TriggerEvent('esx_skin:playerRegistered')
-                end
-            else
-                ESX.ShowNotification(_U('registration_error'), "error", 5000)
-            end
-        end, data)
-    end)
+RegisterNetEvent('esx_identity:saveID')
+AddEventHandler('esx_identity:saveID', function(data)
+	myIdentifiers = data
+end)
 
-    CreateThread(function()
-        while true do
-            local sleep = 1500
+RegisterNUICallback('escape', function(data, cb)
+	if hasIdentity then
+		EnableGui(false)
+	else
+		ESX.ShowNotification(_U('create_a_character'))
+	end
+end)
 
-            if guiEnabled then
-                sleep = 0
-                DisableControlAction(0, 1, true) -- LookLeftRight
-                DisableControlAction(0, 2, true) -- LookUpDown
-                DisableControlAction(0, 106, true) -- VehicleMouseControlOverride
-                DisableControlAction(0, 142, true) -- MeleeAttackAlternate
-                DisableControlAction(0, 30, true) -- MoveLeftRight
-                DisableControlAction(0, 31, true) -- MoveUpDown
-                DisableControlAction(0, 21, true) -- disable sprint
-                DisableControlAction(0, 24, true) -- disable attack
-                DisableControlAction(0, 25, true) -- disable aim
-                DisableControlAction(0, 47, true) -- disable weapon
-                DisableControlAction(0, 58, true) -- disable weapon
-                DisableControlAction(0, 263, true) -- disable melee
-                DisableControlAction(0, 264, true) -- disable melee
-                DisableControlAction(0, 257, true) -- disable melee
-                DisableControlAction(0, 140, true) -- disable melee
-                DisableControlAction(0, 141, true) -- disable melee
-                DisableControlAction(0, 143, true) -- disable melee
-                DisableControlAction(0, 75, true) -- disable exit vehicle
-                DisableControlAction(27, 75, true) -- disable exit vehicle
-            end
-            Wait(sleep)
-        end
-    end)
+RegisterNUICallback('register', function(data, cb)
+	local reason = ""
+	myIdentity = data
+	for theData, value in pairs(myIdentity) do
+		if theData == "firstname" or theData == "lastname" then
+			reason = verifyName(value)
+			
+			if reason ~= "" then
+				break
+			end
+		elseif theData == "dateofbirth" then
+			if value == "invalid" then
+				reason = "Invalid date of birth!"
+				break
+			end
+		elseif theData == "height" then
+			local height = tonumber(value)
+			if height then
+				if height > 200 or height < 140 then
+					reason = "Unacceptable player height!"
+					break
+				end
+			else
+				reason = "Unacceptable player height!"
+				break
+			end
+		end
+	end
+	
+	if reason == "" then
+		TriggerServerEvent('esx_identity:setIdentity', data, myIdentifiers)
+		EnableGui(false)
+		local slect = math.random(1, #Config.Pos)
+		SetEntityCoords(GetPlayerPed(-1), Config.Pos[slect].x, Config.Pos[slect].y, Config.Pos[slect].z,false,false,false,true)
+		Citizen.Wait(500)
+		TriggerEvent('esx_skin:openSaveableMenu', myIdentifiers.id)
+		TriggerServerEvent('Dv_Hunter:ADDITEM')
+	else
+		ESX.ShowNotification(reason)
+	end
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
+
+		if guiEnabled then
+			EnableGui(true)
+			DisableControlAction(0, 1,   true) -- LookLeftRight
+			DisableControlAction(0, 2,   true) -- LookUpDown
+			DisableControlAction(0, 106, true) -- VehicleMouseControlOverride
+			DisableControlAction(0, 142, true) -- MeleeAttackAlternate
+			DisableControlAction(0, 30,  true) -- MoveLeftRight
+			DisableControlAction(0, 31,  true) -- MoveUpDown
+			DisableControlAction(0, 21,  true) -- disable sprint
+			DisableControlAction(0, 24,  true) -- disable attack
+			DisableControlAction(0, 25,  true) -- disable aim
+			DisableControlAction(0, 47,  true) -- disable weapon
+			DisableControlAction(0, 58,  true) -- disable weapon
+			DisableControlAction(0, 263, true) -- disable melee
+			DisableControlAction(0, 264, true) -- disable melee
+			DisableControlAction(0, 257, true) -- disable melee
+			DisableControlAction(0, 140, true) -- disable melee
+			DisableControlAction(0, 141, true) -- disable melee
+			DisableControlAction(0, 143, true) -- disable melee
+			DisableControlAction(0, 75,  true) -- disable exit vehicle
+			DisableControlAction(27, 75, true) -- disable exit vehicle
+		else
+			Citizen.Wait(500)
+		end
+	end
+end)
+
+function verifyName(name)
+	-- Don't allow short user names
+	local nameLength = string.len(name)
+	if nameLength > 25 or nameLength < 2 then
+		return 'Your player name is either too short or too long.'
+	end
+	
+	-- Don't allow special characters (doesn't always work)
+	local count = 0
+	for i in name:gmatch('[abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ0123456789 -]') do
+		count = count + 1
+	end
+	if count ~= nameLength then
+		return 'Your player name contains special characters that are not allowed on this server.'
+	end
+	
+	-- Does the player carry a first and last name?
+	-- 
+	-- Example:
+	-- Allowed:     'Bob Joe'
+	-- Not allowed: 'Bob'
+	-- Not allowed: 'Bob joe'
+	local spacesInName    = 0
+	local spacesWithUpper = 0
+	for word in string.gmatch(name, '%S+') do
+
+		if string.match(word, '%u') then
+			spacesWithUpper = spacesWithUpper + 1
+		end
+
+		spacesInName = spacesInName + 1
+	end
+
+	if spacesInName > 2 then
+		return 'Your name contains more than two spaces'
+	end
+	
+	if spacesWithUpper ~= spacesInName then
+		return 'your name must start with a capital letter.'
+	end
+
+	return ''
 end

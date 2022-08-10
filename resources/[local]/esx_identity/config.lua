@@ -1,19 +1,48 @@
-Config                  = {}
-Config.Locale           = 'en'
+Config = {}
 
--- [Config.EnableCommands]
--- Enables Commands Such As /char and /chardel
-Config.EnableCommands   = ESX.GetConfig().EnableDebug
+Config.Locale = 'en'
 
-Config.UseDeferrals     = false -- EXPERIMENTAL Character Registration Method.
+Config.Pos = {
+	{x = -59.91, y = -852.18, z = 40.57},
+	{x = -62.83, y = -853.09, z = 40.57},
+	{x = -66.71, y = -853.56, z = 40.57},
+	{x = -71.23, y = -854.04, z = 40.57},
+	{x = -76.02, y = -852.69, z = 40.57},
+	{x = -84.77, y = -851.86, z = 40.57},
+	{x = -88.73, y = -849.69, z = 40.57},
+	{x = -87.04, y = -858.45, z = 40.57},
+	{x = -81.17, y = -859.11, z = 40.57},
+	{x = -76.17, y = -860.59, z = 40.57},
+	{x = -70.62, y = -859.57, z = 40.57},
+	{x = -65.07, y = -858.81, z = 40.57},
+	{x = -60.39, y = -857.3, z = 40.57},
+	{x = -88.03, y = -865.86, z = 40.57},
+}
 
-
--- These values are for the second input validation in server/main.lua
-Config.MaxNameLength    = 20 -- Max Name Length.
-Config.MinHeight        = 120 -- 120 cm lowest height
-Config.MaxHeight        = 220 -- 220 cm max height.
-Config.LowestYear       = 1900 -- 112 years old is the oldest you can be.
-Config.HighestYear      = 2003 -- 18 years old is the youngest you can be.
-
-Config.FullCharDelete   = true -- Delete all reference to character.
-Config.EnableDebugging  = ESX.GetConfig().EnableDebug -- prints for debugging :)
+Config.Item = {
+	{
+		ItemName = "water",  -- ชื่อไอเทม
+		ItemCount = 10, -- จำนวน
+		Percent = 100 -- เปอร์เซ็นที่จะได้รับของชิ้นนี้
+	},
+	-- {
+		-- ItemName = "water",  -- ชื่อไอเทม
+		-- ItemCount = 10, -- จำนวน
+		-- Percent = 100 -- เปอร์เซ็นที่จะได้รับของชิ้นนี้
+	-- },
+	-- {
+		-- ItemName = "water",  -- ชื่อไอเทม
+		-- ItemCount = 10, -- จำนวน
+		-- Percent = 100 -- เปอร์เซ็นที่จะได้รับของชิ้นนี้
+	-- },
+	-- {
+		-- ItemName = "water",  -- ชื่อไอเทม
+		-- ItemCount = 10, -- จำนวน
+		-- Percent = 100 -- เปอร์เซ็นที่จะได้รับของชิ้นนี้
+	-- },
+	-- {
+		-- ItemName = "water",  -- ชื่อไอเทม
+		-- ItemCount = 10, -- จำนวน
+		-- Percent = 100 -- เปอร์เซ็นที่จะได้รับของชิ้นนี้
+	-- },
+}

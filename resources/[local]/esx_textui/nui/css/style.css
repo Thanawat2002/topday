@@ -24,7 +24,7 @@ body {
     min-width: 15%;
     width: fit-content;
     height: 50px;
-    background: rgba(5,5,5,.9);
+    background: rgba(5, 5, 5, .9);
     border-radius: .5rem;
     animation: growDown 300ms ease-in-out;
     align-items: center;
@@ -60,7 +60,6 @@ body {
     margin-top: 4px;
 }
 
-
 @keyframes growDown {
     0% {
         transform: scaleY(0);
@@ -74,9 +73,5 @@ body {
 }
 
 .material-symbols-outlined {
-    font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 48
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48
 }
